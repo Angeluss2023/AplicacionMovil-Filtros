@@ -7,7 +7,9 @@ import 'pages/perfil.dart';
 import 'pages/buscar.dart';
 import 'pages/publicar.dart';
 import 'pages/notificaciones.dart';
+import 'pages/edicion.dart';
 import 'pages/Historias.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/publicar': (context) => PublicarPage(),
         '/historias': (context) => HistoriasPage(),
         '/notificaciones': (context) => NotificacionesPage(),
+        
       },
     );
   }
