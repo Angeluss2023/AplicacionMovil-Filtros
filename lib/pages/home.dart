@@ -7,13 +7,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> historias = [
-    'Tu Historia',
-    'Usuario 1',
-    'Usuario 2',
-    'Usuario 3',
-    'Usuario 4',
-    'Usuario 5',
+  final List<Map<String, String>> historias = [
+    {'usuario': 'Tu Historia', 'imagen': 'https://via.placeholder.com/150'},
+    {'usuario': 'Usuario 1', 'imagen': 'https://via.placeholder.com/200'},
+    {'usuario': 'Usuario 2', 'imagen': 'https://via.placeholder.com/250'},
+    {'usuario': 'Usuario 3', 'imagen': 'https://via.placeholder.com/300'},
+    {'usuario': 'Usuario 4', 'imagen': 'https://via.placeholder.com/350'},
   ];
 
   final List<bool> likes = List.generate(5, (index) => false);
@@ -142,7 +141,12 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HistoriasPage(),
+                          builder: (context) => HistoriasPage(
+                            historias: [
+                              'https://via.placeholder.com/150',
+                              'https://via.placeholder.com/200',
+                            ],
+                          ),
                         ),
                       );
                     }
@@ -161,27 +165,15 @@ class _HomePageState extends State<HomePage> {
                                 : Colors.transparent,
                             width: 2,
                           ),
-                          gradient: isUserStory
-                              ? null
-                              : LinearGradient(
-                                  colors: [
-                                    Colors.pink,
-                                    Colors.orange,
-                                    Colors.yellow,
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ),
                           image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/profile_placeholder.png'),
+                            image: NetworkImage(historias[index]['imagen']!),
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       SizedBox(height: 5),
                       Text(
-                        historias[index],
+                        historias[index]['usuario']!,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 12,
